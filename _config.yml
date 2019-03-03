@@ -103,7 +103,7 @@ gitment:
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: LeonhardE
-    repo: blog-comments
+    repo: leonharde.github.io
     clientID: 1782942e25202f4804d8
     clientSecret: 9485a32a6e64859b3fe990d231f107cb68196258
 # 在使用其它评论组件时可点击显示 Disqus
