@@ -1,16 +1,16 @@
 ---
 layout: post
-title: Highcharts
+title: 使用Highcharts绘制统计图表
 categories: Web开发
 description: 使用Highcharts绘制统计图表
 keywords: 前端 交互 Highcharts
 ---
 
-# 使用Highcharts绘制统计图表
+# 使用 Highcharts 绘制统计图表
 
 ​	本博客将介绍如何在基于 Python Flask 框架的 Web 应用中借助 Highcharts 绘制统计图表。绘制图表是 Web 开发中的一项基本需求，许多涉及到大量数据的项目都需要通过绘制图表将数据可视化。在这里我将介绍一个基于 JavaScript 的图表库 Highcharts，以及如何在你的 Flask 应用中使用 Highcharts 绘图。
 
-## Highcharts
+## Highcharts 简介
 
 ​	Highcharts 是一个用 JavaScript 编写的图表库，可以方便快捷地添加到 Web 应用中并绘制出有交互性的图表。Highcharts 库支持的图表类型包括直线图、曲线图、区域图、柱状图、饼状图、散状点图、仪表图、气泡图、瀑布流图等 20 余种，可谓功能强大。
 
@@ -68,4 +68,57 @@ keywords: 前端 交互 Highcharts
 
 ![屏幕快照 2019-06-22 下午7.58.37](https://LeonhardE.github.io/images/屏幕快照 2019-06-22 下午7.58.37.png)
 
-除了条形图，Highcharts 还可以绘制曲线图
+除了条形图，Highcharts 还可以绘制折线图，对上述代码稍作修改如下
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>第一个 Highcharts 图表</title>
+</head>
+<body>
+    <!-- 图表容器 DOM -->
+    <div id="container" style="width: 600px;height:400px;"></div>
+    <!-- 引入 highcharts.js -->
+    <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script>
+        // 图表配置
+        var options = {
+            chart: {
+                type: 'line'                          
+            },
+            title: {
+                text: '我的第二个图表'                
+            },
+            xAxis: {
+                categories: ['2019-01-01', '2019-01-02', '2019-01-03', '2019-01-04', 
+                             '2019-01-05', '2019-01-06', '2019-01-07', '2019-01-08']   // x 轴分类
+            },
+            yAxis: {
+                title: {
+                    text: '打代码行数'                // y 轴标题
+                }
+            },
+            series: [{                              // 数据列
+                name: '小明',                        // 数据列名
+                data: [100, 20, 45, 64, 23, 0, 90, 123]                     // 数据
+            }, {
+                name: '小红',
+                data: [35, 71, 32, 60, 92, 13, 20, 102]
+            }]
+        };
+        // 图表初始化函数
+        var chart = Highcharts.chart('container', options);
+    </script>
+</body>
+</html>
+```
+
+![屏幕快照 2019-06-22 下午8.20.59](https://LeonhardE.github.io/images/屏幕快照 2019-06-22 下午8.24.55.png)
+
+除了这两种，Highcharts 还可以绘制许多种不同类型的统计图表，在此不一一列举。
+
+## 在 Flask 应用中添加 Highcharts 图表
+
+​	
