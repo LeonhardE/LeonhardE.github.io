@@ -8,13 +8,13 @@ keywords: 前端 交互 Highcharts
 
 # 使用 Highcharts 绘制统计图表
 
-​	本博客将介绍如何在基于 Python Flask 框架的 Web 应用中借助 Highcharts 绘制统计图表。绘制图表是 Web 开发中的一项基本需求，许多涉及到大量数据的项目都需要通过绘制图表将数据可视化。在这里我将介绍一个基于 JavaScript 的图表库 Highcharts，以及如何在你的 Flask 应用中使用 Highcharts 绘图。
+本博客将介绍如何在基于 Python Flask 框架的 Web 应用中借助 Highcharts 绘制统计图表。绘制图表是 Web 开发中的一项基本需求，许多涉及到大量数据的项目都需要通过绘制图表将数据可视化。在这里我将介绍一个基于 JavaScript 的图表库 Highcharts，以及如何在你的 Flask 应用中使用 Highcharts 绘图。
 
 ## Highcharts 简介
 
-​	Highcharts 是一个用 JavaScript 编写的图表库，可以方便快捷地添加到 Web 应用中并绘制出有交互性的图表。Highcharts 库支持的图表类型包括直线图、曲线图、区域图、柱状图、饼状图、散状点图、仪表图、气泡图、瀑布流图等 20 余种，可谓功能强大。
+Highcharts 是一个用 JavaScript 编写的图表库，可以方便快捷地添加到 Web 应用中并绘制出有交互性的图表。Highcharts 库支持的图表类型包括直线图、曲线图、区域图、柱状图、饼状图、散状点图、仪表图、气泡图、瀑布流图等 20 余种，可谓功能强大。
 
-​	要想在页面中引入 Highcharts，首先需要添加 highcharts.js 文件，对应的代码如下
+要想在页面中引入 Highcharts，首先需要添加 highcharts.js 文件，对应的代码如下
 
 ```html
 <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
@@ -121,9 +121,9 @@ keywords: 前端 交互 Highcharts
 
 ## 在 Flask 应用中添加 Highcharts 图表
 
-​		本节中我将以我们小组开发的后台管理系统作为例子，讲述如何在 Flask 应用中添加Highcharts 图表。
+本节中我将以我们小组开发的后台管理系统作为例子，讲述如何在 Flask 应用中添加Highcharts 图表。
 
-​		我们的后台管理系统 Python 代码基本结构分为 Model (数据库模型)、Service (服务)与 Web (网页功能)。项目的基本目录如下：
+我们的后台管理系统 Python 代码基本结构分为 Model (数据库模型)、Service (服务)与 Web (网页功能)。项目的基本目录如下：
 
 ![屏幕快照2019-06-28下午8.10.34](https://LeonhardE.github.io/images/小欣餐饮png/屏幕快照2019-06-28下午8.10.34.png)
 
@@ -165,7 +165,7 @@ class StatDailySite:
 
 该部分代码返回的列表长度为开始时间与结束时间之差，列表元素是一个长度为 3 的列表，第一个元素是日期，第二个元素是当天的订单数，第三个元素是当天的营收。
 
-​		在完成了提供数据服务的函数后，需要构建一个请求数据的 url，该部分代码位于 Web文件夹下，文件名为 "chart.py"。该文件存在的目的是完成一个请求数据的 url，以供 JavaScript 程序请求数据。该部分分为两个部分，一个返回的是绘制订单统计图的数据，一个返回的是绘制营收统计图的数据，两个 url 分别为 /chart/dashboard 与 /chart/finance。该部分需要用到之前完成的 Service 函数，源码如下：
+在完成了提供数据服务的函数后，需要构建一个请求数据的 url，该部分代码位于 Web文件夹下，文件名为 "chart.py"。该文件存在的目的是完成一个请求数据的 url，以供 JavaScript 程序请求数据。该部分分为两个部分，一个返回的是绘制订单统计图的数据，一个返回的是绘制营收统计图的数据，两个 url 分别为 /chart/dashboard 与 /chart/finance。该部分需要用到之前完成的 Service 函数，源码如下：
 
 ```Python
 # -*- coding: utf-8 -*-
@@ -265,4 +265,4 @@ drawChart:function(){
 
 可以看到这段代码是向 /chart/finance 请求数据的，然后将请求回来的数据调用 Highcharts 绘图函数即可，简单清晰，绘图效果也很美观。
 
-​		至此，在 Flask 应用中使用 Highcharts 绘图的技巧就分享完毕了，希望能对大家今后的开发有所帮助。
+至此，在 Flask 应用中使用 Highcharts 绘图的技巧就分享完毕了，希望能对大家今后的开发有所帮助。
